@@ -17,30 +17,30 @@ class GremlinService {
     this.g = graph.traversal().withRemote(this.dc);
   }
 
-  _objFormat (response) {
-    let obj = [];
-    for(var key in response) {
-      let r = response[key];
-
-      let data = {};
-      data.id = r.id;
-      data.label = r.label;
-      data.type = r.type;
-      data.prop = {};
-
-      for(var p in r.properties) {
-          data.prop[p] = r.properties[p][0].value;
+  _formatNodes(data) {
+    var nodes = [];
+    for(var i = 0; i < data.length; i++)
+    {
+      let props = {};
+      for (var val in data[i]) {
+        if(typeof data[i][val] === 'object') {
+          props[val] = data[i][val][0];
+        }
       }
-
-      obj.push(data);
+      
+      nodes.push({
+        id: data[i].id,
+        label: data[i].label,
+        props: props
+      });
     }
-    return obj;
-  } 
+    return nodes;
+  }
 
   async getVertexById (id) {
     let vertex = await this.g.V(id).valueMap(true).toList();
     this.dc.close();
-    return this._objFormat(vertex);
+    return this._formatNodes(vertex);
   }
 
 }

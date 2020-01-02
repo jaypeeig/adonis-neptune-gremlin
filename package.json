@@ -1,0 +1,25 @@
+{
+  "name": "adonis-neptune-gremlin",
+  "version": "1.0.0",
+  "description": "Gremlin service provider for AWS Neptune",
+  "main": "src/Gremlin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaypeeig/adonis-neptune-gremlin.git"
+  },
+  "dependencies": {
+    "gremlin": "3.2.11"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Jaypee Ignacio"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaypeeig/adonis-neptune-gremlin/issues"
+  },
+  "homepage": "https://github.com/jaypeeig/adonis-neptune-gremlin#readme"
+}
